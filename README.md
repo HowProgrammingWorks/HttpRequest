@@ -1,2 +1,1 @@
-# HttpRequest
-HTTP, XMLHttpRequest, fetch
+# HTTP Request, XMLHttpRequest, fetch
