@@ -8,20 +8,14 @@ const users = {
 };
 
 const routing = {
-  '/api/user/': name => users[name],
-  '/api/userBorn/': name => users[name].born
-};
-
-const types = {
-  object: o => JSON.stringify(o),
-  undefined: () => '{"error":"not found"}',
-  function: (fn, req, res) => JSON.stringify(fn(req, res))
+  '/api/user': name => users[name],
+  '/api/userBorn': name => users[name].born
 };
 
 http.createServer((req, res) => {
-  const data = routing[req.url];
-  const type = typeof(data);
-  const serializer = types[type];
-  const result = serializer(data, req, res);
-  res.end(result);
+  const url = req.url.split('/');
+  const par = url.pop();
+  const method = routing[url.join('/')];
+  const result = method ? method(par) : { error: 'not found' };
+  res.end(JSON.stringify(result));
 }).listen(8000);
