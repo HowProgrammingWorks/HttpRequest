@@ -1,10 +1,11 @@
 'use strict';
 
-const http = require('http');
+const https = require('https');
+const fs = require('fs');
 
-const url = 'http://ietf.org/';
+const url = 'https://ietf.org/';
 
-http.get(url, res => {
+https.get(url, res => {
   console.log(res.req._header);
   console.dir(res.headers);
   if (res.statusCode !== 200) {
@@ -18,6 +19,10 @@ http.get(url, res => {
     lines.push(chunk);
   });
   res.on('end', () => {
-    console.log(lines.join());
+    const data = lines.join();
+    console.log({ size: data.length, chunks: lines.length });
+    fs.writeFile('content.html', data, () => {
+      console.log('Saved to file: content.html');
+    });
   });
 });
