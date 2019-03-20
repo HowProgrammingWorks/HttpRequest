@@ -3,7 +3,7 @@
 const fs = require('fs');
 const http = require('http');
 
-const index = fs.readFileSync('./4-fetch.html');
+const index = fs.readFileSync('./5-fetch.html');
 const person = { name: 'Marcus' };
 const data = JSON.stringify(person);
 
