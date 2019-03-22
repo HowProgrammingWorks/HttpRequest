@@ -14,9 +14,9 @@ const ajax = (base, methods) => {
           callback(new Error(`Status Code: ${res.statusCode}`));
           return;
         }
-        const lines = [];
-        res.on('data', chunk => lines.push(chunk));
-        res.on('end', () => callback(null, JSON.parse(lines.join())));
+        const buffer = [];
+        res.on('data', chunk => buffer.push(chunk));
+        res.on('end', () => callback(null, JSON.parse(buffer.join())));
       });
     };
   }

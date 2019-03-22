@@ -13,11 +13,11 @@ http.get(url, res => {
     return;
   }
   res.setEncoding('utf8');
-  const lines = [];
+  const buffer = [];
   res.on('data', chunk => {
-    lines.push(chunk);
+    buffer.push(chunk);
   });
   res.on('end', () => {
-    console.log(lines.join());
+    console.log(buffer.join());
   });
 });

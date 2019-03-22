@@ -11,9 +11,9 @@ const fetch = url => new Promise((resolve, reject) => {
       reject(new Error(`Status Code: ${statusCode} ${statusMessage}`));
     }
     res.setEncoding('utf8');
-    const lines = [];
-    res.on('data', chunk => lines.push(chunk));
-    res.on('end', () => resolve(lines.join()));
+    const buffer = [];
+    res.on('data', chunk => buffer.push(chunk));
+    res.on('end', () => resolve(buffer.join()));
   });
 });
 

@@ -14,13 +14,13 @@ https.get(url, res => {
     return;
   }
   res.setEncoding('utf8');
-  const lines = [];
+  const buffer = [];
   res.on('data', chunk => {
-    lines.push(chunk);
+    buffer.push(chunk);
   });
   res.on('end', () => {
-    const data = lines.join();
-    console.log({ size: data.length, chunks: lines.length });
+    const data = buffer.join();
+    console.log({ size: data.length, chunks: buffer.length });
     fs.writeFile('content.html', data, () => {
       console.log('Saved to file: content.html');
     });
