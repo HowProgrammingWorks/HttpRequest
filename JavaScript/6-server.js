@@ -8,8 +8,8 @@ const users = {
 };
 
 const routing = {
-  '/api/user': name => users[name],
-  '/api/userBorn': name => users[name].born
+  '/api/user': (name) => users[name],
+  '/api/userBorn': (name) => users[name].born
 };
 
 http.createServer((req, res) => {

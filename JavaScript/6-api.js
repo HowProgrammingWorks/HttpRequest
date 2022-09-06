@@ -9,13 +9,13 @@ const ajax = (base, methods) => {
       const callback = args.pop();
       const url = base + method + '/' + args.join('/');
       console.log(url);
-      http.get(url, res => {
+      http.get(url, (res) => {
         if (res.statusCode !== 200) {
           callback(new Error(`Status Code: ${res.statusCode}`));
           return;
         }
         const buffer = [];
-        res.on('data', chunk => buffer.push(chunk));
+        res.on('data', (chunk) => buffer.push(chunk));
         res.on('end', () => callback(null, JSON.parse(buffer.join())));
       });
     };

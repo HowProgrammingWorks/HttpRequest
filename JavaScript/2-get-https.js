@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const url = 'https://ietf.org/';
 
-https.get(url, res => {
+https.get(url, (res) => {
   console.log(res.req._header);
   console.dir(res.headers);
   if (res.statusCode !== 200) {
@@ -15,7 +15,7 @@ https.get(url, res => {
   }
   res.setEncoding('utf8');
   const buffer = [];
-  res.on('data', chunk => {
+  res.on('data', (chunk) => {
     buffer.push(chunk);
   });
   res.on('end', () => {
