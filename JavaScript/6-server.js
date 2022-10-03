@@ -1,6 +1,6 @@
 'use strict';
 
-const http = require('http');
+const http = require('node:http');
 
 const users = {
   marcus: { name: 'Marcus Aurelius', city: 'Rome', born: 121 },

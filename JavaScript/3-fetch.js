@@ -1,7 +1,7 @@
 'use strict';
 
-const http = require('http');
-const https = require('https');
+const http = require('node:http');
+const https = require('node:https');
 
 const fetch = (url) => new Promise((resolve, reject) => {
   const protocol = url.startsWith('https') ? https : http;

@@ -1,7 +1,7 @@
 'use strict';
 
-const https = require('https');
-const fs = require('fs');
+const https = require('node:https');
+const fs = require('node:fs');
 
 const url = 'https://ietf.org/';
 
